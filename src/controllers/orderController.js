@@ -42,6 +42,27 @@ const getOrderById = async (req, res) => {
     }
 };
 
+const updateOrder = async (req,res)=>{
+    try{
+        const order = await Order.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new:true,
+                runValidators:true
+            }
+        )
+        if(!order){
+            return res.status(404).json({
+                message:"order not found"
+            })
+        }
+        res.status(200).json(order);    
+    }
+    catch(error){
+        res.status(500).json({message: error.message}); 
+    }
+}
 
 const deleteOrder = async (req, res) => {
     try {
@@ -55,9 +76,12 @@ const deleteOrder = async (req, res) => {
     }
 };
 
+
+
 module.exports = {
     createOrder,
     getAllOrders,
     getOrderById,
+    updateOrder,
     deleteOrder
 };

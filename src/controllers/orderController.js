@@ -62,7 +62,7 @@ const updateOrder = async (req,res)=>{
     catch(error){
         res.status(500).json({message: error.message}); 
     }
-}
+};
 
 const deleteOrder = async (req, res) => {
     try {

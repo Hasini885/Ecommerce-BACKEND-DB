@@ -55,4 +55,5 @@ MONGO_URI=your_mongodb_connection_string
 * GET /orders
 * GET /orders/:id
 * DELETE /orders/:id
+* PUT /orders/:id
 
